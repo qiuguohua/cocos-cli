@@ -790,7 +790,7 @@ export class NodeManager {
         if (path === '_components') {
             const comp = data[index];
             // https://github.com/cocos-creator/3d-tasks/issues/1116
-            compMgr.removeComponent(comp.uuid);
+            compMgr.removeComponent(comp);
         } else {
             // 删除某个 item
             data.splice(index, 1);
