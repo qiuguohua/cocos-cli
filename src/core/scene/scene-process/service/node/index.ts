@@ -9,7 +9,8 @@ import { IProperty } from '../../../@types/public';
 
 const NodeMgr = EditorExtends.Node;
 
-const { get, set } = require('lodash');
+import get from 'lodash/get';
+import set from 'lodash/set';
 import { isEditorNode, getNodeName } from './node-utils';
 import { ServiceEvents } from '../core/global-events';
 
