@@ -1,4 +1,4 @@
-import { Canvas, Color, Layers, Node, Vec3 } from 'cc';
+import { Canvas, Color, Layers, Vec3 } from 'cc';
 import { BaseService } from './core';
 import { register, Service } from './core/decorator';
 import { CameraController2D } from './camera/camera-controller-2d';
