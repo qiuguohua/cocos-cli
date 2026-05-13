@@ -5288,14 +5288,6 @@ export declare interface IComponent extends IProperty {
     } & Record<string, IPropertyValueType>;
     mountedRoot?: string;
 }
-export declare interface IComponentIdentifier {
-    cid: string;
-    path: string;
-    uuid: string;
-    name: string;
-    type: string;
-    enabled: boolean;
-}
 export declare interface IComponentService extends IServiceEvents {
     add(params: IAddComponentOptions): Promise<IComponent>;
     remove(params: IRemoveComponentOptions): Promise<boolean>;
@@ -5411,14 +5403,6 @@ export declare interface ImageMeta {
     uri?: string;
     remap?: string;
 }
-export declare interface IMountedChildrenInfo {
-    targetInfo: ITargetInfo | null;
-    nodes: INodeIdentifier[];
-}
-export declare interface IMountedComponentsInfo {
-    targetInfo: ITargetInfo | null;
-    components: IComponentIdentifier[];
-}
 export declare interface INode {
     path: string;
     active: IProperty;
@@ -5438,11 +5422,6 @@ export declare interface INode {
     _prefabInstance?: any;
     removedComponents?: IRemovedComponentInfo[];
     mountedRoot?: string;
-}
-export declare interface INodeIdentifier {
-    nodeId: string;
-    path: string;
-    name: string;
 }
 export declare interface INodeProperties {
     position: IVec3;
@@ -5510,36 +5489,13 @@ export declare interface IPrefab {
     targetOverrides?: ITargetOverrideInfo[];
     instance?: IProperty;
 }
-export declare interface IPrefabDetail {
-    name: string;
-    uuid: string;
-    data: INodeIdentifier;
-    optimizationPolicy: OptimizationPolicy;
-    persistent: boolean;
-}
-export declare interface IPrefabInfo {
-    asset?: IPrefabDetail;
-    root?: INodeIdentifier;
-    instance?: IPrefabInstance;
-    fileId: string;
-    targetOverrides: ITargetOverrideDetail[];
-    nestedPrefabInstanceRoots: INodeIdentifier[];
-}
-export declare interface IPrefabInstance {
-    fileId: string;
-    prefabRootNode?: INodeIdentifier;
-    mountedChildren: IMountedChildrenInfo[];
-    mountedComponents: IMountedComponentsInfo[];
-    propertyOverrides: IPropertyOverrideInfo[];
-    removedComponents: ITargetInfo[];
-}
 export declare interface IPrefabService extends IServiceEvents {
     createPrefabFromNode(params: ICreatePrefabFromNodeParams): Promise<INode>;
     applyPrefabChanges(params: IApplyPrefabChangesParams): Promise<boolean>;
     revertToPrefab(params: IRevertToPrefabParams): Promise<boolean>;
     unpackPrefabInstance(params: IUnpackPrefabInstanceParams): Promise<INode>;
     isPrefabInstance(params: IIsPrefabInstanceParams): Promise<boolean>;
-    getPrefabInfo(params: IGetPrefabInfoParams): Promise<IPrefabInfo | null>;
+    getPrefabInfo(params: IGetPrefabInfoParams): Promise<IPrefab | null>;
     removePrefabInfoFromNode(node: Node_2, removeNested?: boolean): void;
 }
 export declare interface IPrefabStateInfo {
@@ -5597,11 +5553,6 @@ export declare type IPropertyLock = {
     default: number; 
     message: string 
 };
-export declare interface IPropertyOverrideInfo {
-    targetInfo: ITargetInfo | null;
-    propertyPath: string[];
-    value?: any;
-}
 export declare type IPropertyValueType = IProperty | IProperty[] | null | undefined | number | boolean | string | Vec4 | Vec3 | Vec2 | Mat4 | any | Array<unknown>
 export declare interface IQuat {
     x: number;
@@ -5781,16 +5732,6 @@ export declare type ISupportCreateCCType =
 | 'cc.AnimationMask'        
 | 'cc.AnimationGraphVariant';
 export declare type ISupportCreateType = typeof SUPPORT_CREATE_TYPES[number];
-export declare interface ITargetInfo {
-    localID: string[];
-}
-export declare interface ITargetOverrideDetail {
-    source: IComponentIdentifier | INodeIdentifier | null;
-    sourceInfo: ITargetInfo | null;
-    propertyPath: string[];
-    target: INodeIdentifier | null;
-    targetInfo: ITargetInfo | null;
-}
 export declare interface ITargetOverrideInfo {
     source: string;
     sourceInfo?: string[];
@@ -5970,11 +5911,6 @@ export declare enum NormalImportSetting {
     recalculate = 3
 }
 export declare type OperationEvent = SceneDragEvent | SceneKeyboardEvent | SceneMouseEvent | 'resize';
-export declare enum OptimizationPolicy {
-    AUTO = 0,
-    SINGLE_INSTANCE = 1,
-    MULTI_INSTANCE = 2
-}
 export declare interface ParticleAssetUserData {
     totalParticles: number;
     life: number;
@@ -7189,14 +7125,6 @@ export declare interface IComponent extends IProperty {
     } & Record<string, IPropertyValueType>;
     mountedRoot?: string;
 }
-export declare interface IComponentIdentifier {
-    cid: string;
-    path: string;
-    uuid: string;
-    name: string;
-    type: string;
-    enabled: boolean;
-}
 export declare interface IComponentService extends IServiceEvents {
     add(params: IAddComponentOptions): Promise<IComponent>;
     remove(params: IRemoveComponentOptions): Promise<boolean>;
@@ -7440,14 +7368,6 @@ export declare interface IModuleConfig {
 }
 export declare type IModuleItem = IFeatureItem | IFeatureGroup;
 export declare type IModules = Record<string, IModuleItem>;
-export declare interface IMountedChildrenInfo {
-    targetInfo: ITargetInfo | null;
-    nodes: INodeIdentifier[];
-}
-export declare interface IMountedComponentsInfo {
-    targetInfo: ITargetInfo | null;
-    components: IComponentIdentifier[];
-}
 export declare function importAsset(source: string, target: string, options?: AssetOperationOption): Promise<IAssetInfo[]>;
 export declare interface ImportMap {
     imports?: Record<string, string>;
@@ -7481,11 +7401,6 @@ export declare interface INode {
     _prefabInstance?: any;
     removedComponents?: IRemovedComponentInfo[];
     mountedRoot?: string;
-}
-export declare interface INodeIdentifier {
-    nodeId: string;
-    path: string;
-    name: string;
 }
 export declare interface INodeProperties {
     position: IVec3;
@@ -7580,36 +7495,13 @@ export declare interface IPrefab {
     targetOverrides?: ITargetOverrideInfo[];
     instance?: IProperty;
 }
-export declare interface IPrefabDetail {
-    name: string;
-    uuid: string;
-    data: INodeIdentifier;
-    optimizationPolicy: OptimizationPolicy;
-    persistent: boolean;
-}
-export declare interface IPrefabInfo {
-    asset?: IPrefabDetail;
-    root?: INodeIdentifier;
-    instance?: IPrefabInstance;
-    fileId: string;
-    targetOverrides: ITargetOverrideDetail[];
-    nestedPrefabInstanceRoots: INodeIdentifier[];
-}
-export declare interface IPrefabInstance {
-    fileId: string;
-    prefabRootNode?: INodeIdentifier;
-    mountedChildren: IMountedChildrenInfo[];
-    mountedComponents: IMountedComponentsInfo[];
-    propertyOverrides: IPropertyOverrideInfo[];
-    removedComponents: ITargetInfo[];
-}
 export declare interface IPrefabService extends IServiceEvents {
     createPrefabFromNode(params: ICreatePrefabFromNodeParams): Promise<INode>;
     applyPrefabChanges(params: IApplyPrefabChangesParams): Promise<boolean>;
     revertToPrefab(params: IRevertToPrefabParams): Promise<boolean>;
     unpackPrefabInstance(params: IUnpackPrefabInstanceParams): Promise<INode>;
     isPrefabInstance(params: IIsPrefabInstanceParams): Promise<boolean>;
-    getPrefabInfo(params: IGetPrefabInfoParams): Promise<IPrefabInfo | null>;
+    getPrefabInfo(params: IGetPrefabInfoParams): Promise<IPrefab | null>;
     removePrefabInfoFromNode(node: Node_2, removeNested?: boolean): void;
 }
 export declare interface IPrefabStateInfo {
@@ -7680,11 +7572,6 @@ export declare type IPropertyLock = {
     default: number; 
     message: string 
 };
-export declare interface IPropertyOverrideInfo {
-    targetInfo: ITargetInfo | null;
-    propertyPath: string[];
-    value?: any;
-}
 export declare type IPropertyValueType = IProperty | IProperty[] | null | undefined | number | boolean | string | Vec4 | Vec3 | Vec2 | Mat4 | any | Array<unknown>
 export declare interface IQuat {
     x: number;
@@ -7895,16 +7782,6 @@ export declare type ISupportCreateCCType =
 | 'cc.AnimationMask'        
 | 'cc.AnimationGraphVariant';
 export declare type ISupportCreateType = typeof SUPPORT_CREATE_TYPES[number];
-export declare interface ITargetInfo {
-    localID: string[];
-}
-export declare interface ITargetOverrideDetail {
-    source: IComponentIdentifier | INodeIdentifier | null;
-    sourceInfo: ITargetInfo | null;
-    propertyPath: string[];
-    target: INodeIdentifier | null;
-    targetInfo: ITargetInfo | null;
-}
 export declare interface ITargetOverrideInfo {
     source: string;
     sourceInfo?: string[];
@@ -8146,11 +8023,6 @@ export declare function onProgress(listener: (current: number, total: number, ur
 export declare function onReady(listener: () => void): () => void;
 export declare function open_2(projectPath: string): Promise<void>;
 export declare type OperationEvent = SceneDragEvent | SceneKeyboardEvent | SceneMouseEvent | 'resize';
-export declare enum OptimizationPolicy {
-    AUTO = 0,
-    SINGLE_INSTANCE = 1,
-    MULTI_INSTANCE = 2
-}
 export declare interface ParticleAssetUserData {
     totalParticles: number;
     life: number;
